@@ -1,8 +1,11 @@
 import React, {  } from "react"
-import './List.module.css'
-import ListItem from "../ListItem/ListItem";
 import { connect } from "react-redux";
+
 import { onDeletePoint } from '../../store/actions/action'
+
+import Item from "./item";
+
+import {list, wrapper} from  './list.module.css'
  
 const List = (props) =>{
 	console.log(props.list.length)
@@ -10,18 +13,17 @@ const List = (props) =>{
 	function deleteElem(index) {
 		props.onDeletePoint(index)
 	}
-	console.log(props.list)
 
 	return(
-		<div className='List'>
-			<div className='List__wrapper'>
+		<div className={list}>
+			<div className={wrapper}>
 				{
 					props.list.length === 0 
 
 					? null
 					: props.list.map((location, index)=>{
 						return(
-							<ListItem
+							<Item
 								key={index+'list-item'}
 								location={location.location}
 								index={index}

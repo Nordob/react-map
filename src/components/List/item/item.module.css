@@ -1,14 +1,14 @@
-.ListItem{
+.item{
 	
 }
 
-.ListItem__wrapper{
+.wrapper{
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 }
 
-.ListItem__close{
+.close{
 	display: block;
 	color: red;
 	padding: 5px;

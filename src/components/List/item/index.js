@@ -1,14 +1,14 @@
 import React from 'react'
-import classes from'./ListItem.module.css'
+import { item, wrapper, close } from './item.module.css'
 
 const ListItem = ({index, location, deleteElem}) =>{
 
 	return(
-		<div className='ListItem'>
-			<div className={classes.ListItem__wrapper}>
+		<div className={item}>
+			<div className={wrapper}>
 				<p className='ListItem__point'>{location}</p>
 				<span 
-					className={classes.ListItem__close}
+					className={close}
 					onClick={()=>{deleteElem(index)}}
 				>x</span>
 			</div>

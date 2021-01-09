@@ -1,8 +1,10 @@
 import React from "react";
-import './App.css';
-import Input from "./components/Input/Input";
 import { connect } from "react-redux";
-import List from './components/List/List'
+
+import List from './components/list'
+import Input from "./components/input";
+
+import './App.css';
 
 
 function App() {

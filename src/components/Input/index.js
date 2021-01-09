@@ -1,7 +1,9 @@
 import React, { useRef } from 'react'
-import './Input.module.css'
 import { connect } from 'react-redux'
+
 import { addPoint } from '../../store/actions/action'
+
+import {input} from  './input.module.css'
 
 const Input = (props) =>{
 	const inputEl = useRef()
@@ -16,7 +18,7 @@ const Input = (props) =>{
 	}
 	
 	return(
-		<div className='Input'>
+		<div className={input}>
 			<input 
 				ref={inputEl}
 				placeholder={props.placeholder}
