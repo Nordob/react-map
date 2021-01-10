@@ -1,33 +1,15 @@
-import React from "react";
+import React from 'react';
+
+import List from './components/list';
+import Input from './components/input';
+
 import './App.css';
-import Input from "./components/Input/Input";
-import { connect } from "react-redux";
-import List from './components/List/List'
 
+const App = () => (
+  <div className="App">
+    <Input placeholder="Пункт назначения" />
+    <List />
+  </div>
+);
 
-function App() {
-  
-
-  return (
-    <div className="App">
-      <Input
-        placeholder='Пункт назначения'
-      />
-      <List/>
-    </div>
-  );
-}
-
-function mapStateToProps(state) {
-  return{
-
-  }
-}
-
-function mapDispatchToProps(dispatch) {
-  return{
-
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
