@@ -1,14 +1,14 @@
 .element {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 }
 
 .close {
   display: block;
-  color: red;
+  box-sizing: border-box;
   padding: 5px;
+  color: red;
   border-radius: 50%;
   cursor: pointer;
-  box-sizing: border-box;
 }
