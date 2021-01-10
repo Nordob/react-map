@@ -1,18 +1,14 @@
-.item{
-	
+.element {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.wrapper{
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-
-.close{
-	display: block;
-	color: red;
-	padding: 5px;
-	border-radius: 50%;
-	cursor: pointer;
-	box-sizing: border-box;
+.close {
+  display: block;
+  color: red;
+  padding: 5px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-sizing: border-box;
 }

@@ -1,53 +1,27 @@
-import React, {  } from "react"
-import { connect } from "react-redux";
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { onDeletePoint } from '../../store/actions/action'
+import { onDeletePoint } from '../../redux/list/action';
 
-import Item from "./item";
+import Item from './item';
 
-import {list, wrapper} from  './list.module.css'
- 
-const List = (props) =>{
-	console.log(props.list.length)
+import { element } from './list.module.css';
 
-	function deleteElem(index) {
-		props.onDeletePoint(index)
-	}
+const List = () => {
+  const dispatch = useDispatch();
+  const { points } = useSelector(({ list }) => list);
 
-	return(
-		<div className={list}>
-			<div className={wrapper}>
-				{
-					props.list.length === 0 
+  const onRemovePoint = (id) => {
+    dispatch(onDeletePoint(id));
+  };
 
-					? null
-					: props.list.map((location, index)=>{
-						return(
-							<Item
-								key={index+'list-item'}
-								location={location.location}
-								index={index}
-								deleteElem={deleteElem}
-							/>
-						)
-					})
-				
-				}
-			</div>
-		</div>
-	)
-}
+  return (
+    <ul className={element}>
+      {points?.map(({ id, location }) => (
+        <Item key={id} name={location} id={id} onClick={onRemovePoint} />
+      ))}
+    </ul>
+  );
+};
 
-function mapStateToProps(state) {
-	return{
-		list: state.points
-	}
-}
-
-function mapDispatchToProps(dispatch) {
-	return{
-		onDeletePoint: index => dispatch(onDeletePoint(index))
-	}
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(List)
+export default List;

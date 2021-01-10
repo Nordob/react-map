@@ -1,19 +1,27 @@
-import React from 'react'
-import { item, wrapper, close } from './item.module.css'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { element, close } from './item.module.css';
 
-const ListItem = ({index, location, deleteElem}) =>{
+const Item = ({ id, name, onClick }) => {
+  const onRemoveItem = () => onClick(id);
+  return (
+    <li className={element}>
+      <p>{name}</p>
+      <button className={close} type="button" onClick={onRemoveItem}>
+        x
+      </button>
+    </li>
+  );
+};
 
-	return(
-		<div className={item}>
-			<div className={wrapper}>
-				<p className='ListItem__point'>{location}</p>
-				<span 
-					className={close}
-					onClick={()=>{deleteElem(index)}}
-				>x</span>
-			</div>
-		</div>
-	)
-}
+Item.propTypes = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string,
+  onClick: PropTypes.func.isRequired,
+};
 
-export default ListItem
+Item.defaultProps = {
+  name: '',
+};
+
+export default Item;

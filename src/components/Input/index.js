@@ -1,37 +1,36 @@
-import React, { useRef } from 'react'
-import { connect } from 'react-redux'
+import React, { useRef } from 'react';
+import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 
-import { addPoint } from '../../store/actions/action'
+import { addPoint } from '../../redux/list/action';
 
-import {input} from  './input.module.css'
+import { input } from './input.module.css';
 
-const Input = (props) =>{
-	const inputEl = useRef()
-	
+const Input = ({ placeholder }) => {
+  const dispatch = useDispatch();
+  const inputEl = useRef();
 
-	function addPoint(e) {
-		if(e.code === 'Enter' && inputEl.current.value.trim() !== ''){
-			const location = { 'location': inputEl.current.value, 'coordinates': { lat: 10, lng: 10} }
-			props.onAddPoint(location)
-			inputEl.current.value = null
-		}
-	}
-	
-	return(
-		<div className={input}>
-			<input 
-				ref={inputEl}
-				placeholder={props.placeholder}
-				onKeyUp={addPoint}
-			></input>
-		</div>
-	)
-}
+  const onAddPoint = ({ code }) => {
+    if (code === 'Enter' && inputEl.current?.value.trim() !== '') {
+      const location = { location: inputEl.current.value, coordinates: { lat: 10, lng: 10 } };
+      dispatch(addPoint(location));
+      inputEl.current.value = null;
+    }
+  };
 
-function mapDispatchToProps(dispatch){
-	return{
-		onAddPoint: location => dispatch(addPoint(location))
-	}
-}
+  return (
+    <div className={input}>
+      <input ref={inputEl} placeholder={placeholder} onKeyUp={onAddPoint} />
+    </div>
+  );
+};
 
-export default connect(null, mapDispatchToProps)(Input)
+Input.propTypes = {
+  placeholder: PropTypes.string,
+};
+
+Input.defaultProps = {
+  placeholder: '',
+};
+
+export default Input;
