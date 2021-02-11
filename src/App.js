@@ -1,33 +1,41 @@
-import React from "react"
-import './App.css'
-import List from './components/list';
-import Input from './components/input';
+import React from 'react'
+import { LoadScript } from '@react-google-maps/api'
+import { app, sidebar, wrapper } from './App.module.css'
+// import { connect } from 'react-redux'
+import List from './components/List'
+import Input from './components/Input'
+import Map from './components/Map'
 
-import { connect } from "react-redux"
-import { LoadScript } from '@react-google-maps/api' 
-const googleMapsApiKey = "";
+const googleMapsApiKey = 'AIzaSyBfcEFFuRT3cmPuOQWeexiF6aaDpolRKkY'
 
 const App = () => (
-  return (
-    <div className="App">
-      <LoadScript id="script-loader" googleMapsApiKey={googleMapsApiKey} libraries={["places"]}>
-    	<Input placeholder="Пункт назначения" />
-        <List/>
+  <div className={app}>
+    <div className={wrapper}>
+      <LoadScript
+        id="script-loader"
+        googleMapsApiKey={googleMapsApiKey}
+        libraries={['places']}
+      >
+        <div className={sidebar}>
+          <Input placeholder="Пункт назначения" />
+          <List />
+        </div>
+        <Map />
       </LoadScript>
     </div>
-  )
+  </div>
 )
 
-function mapStateToProps(state) {
-  return{
+// function mapStateToProps(state) {
+//   return {
 
-  }
-}
+//   };
+// }
 
-function mapDispatchToProps(dispatch) {
-  return{
+// function mapDispatchToProps(dispatch) {
+//   return {
 
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+//   };
+// }
+// connect(mapStateToProps, mapDispatchToProps)
+export default App

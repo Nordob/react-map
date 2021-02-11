@@ -1,0 +1,67 @@
+.listItem {
+  position: relative;
+  display: block;
+  padding: 15px;
+  background: url('../../../images/item__bg.png');
+  background-repeat: repeat;
+  background-position: left;
+  background-size: contain;
+}
+
+.listItem::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -23px;
+  width: 23px;
+  background: url('../../../images/before__item.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  content: '';
+}
+
+.listItem::after {
+  position: absolute;
+  top: 0;
+  right: -23px;
+  bottom: 0;
+  width: 23px;
+  background: url('../../../images/after__item.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  content: '';
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.close {
+  display: block;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+  color: #734211;
+  transition: 0.3s color;
+}
+
+.icon:hover {
+  color: #f32312;
+}
+
+.point {
+  overflow: hidden;
+  color: #772f09;
+  font-weight: 600;
+  font-size: 16px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
